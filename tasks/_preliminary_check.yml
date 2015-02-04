@@ -1,0 +1,10 @@
+---
+- name: determine if haproxy is installed
+  state: >
+    path="{{ haproxy_local_sbin }}"
+  register: haproxy_bin
+  changed_when: haproxy_bin.stat.exists
+  notify:
+    - stop haproxy
+
+- meta: flush_handlers

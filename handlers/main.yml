@@ -1,0 +1,6 @@
+---
+- name: stop haproxy
+  service: >
+    state=stopped
+    name=haproxy
+
