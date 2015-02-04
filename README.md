@@ -13,10 +13,8 @@ Example `rsyslog`:
 ```
 $ModLoad imudp
 $UDPServerRun 514
-
-local0.=info     /var/log/haproxy-info.log
-local1.notice    /var/log/haproxy-notice.log
 ```
+
 ## Logging References:
 - http://sharadchhetri.com/2013/10/16/how-to-enable-logging-of-haproxy-in-rsyslog/
 - http://www.percona.com/blog/2014/10/03/haproxy-give-me-some-logs-on-centos-6-5/

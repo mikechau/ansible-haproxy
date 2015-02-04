@@ -7,4 +7,9 @@
 - name: generate logrotate config
   template: >
     src=/etc/logrotate.d/haproxy.j2
-    dest="{{ haproxy_logrotate_path }}"
+    dest="{{ haproxy_logrotate_config }}"
+
+- name: generate syslog config
+  template: >
+    src=/etc/rsyslog.d/haproxy.conf.j2
+    dest="{{ haproxy_rsyslog_conf }}"

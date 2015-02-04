@@ -8,6 +8,7 @@
     - "{{ haproxy_chroot_path }}"
     - "{{ haproxy_config_path }}"
     - "{{ haproxy_stats_path }}"
+    - "{{ haproxy_log_path }}"
 
 - name: create stats file
   file: >
