@@ -1,0 +1,9 @@
+{{ haproxy_log_file }} {
+  daily
+  rotate 7
+  missingok
+  copytruncate
+  notifempty
+  compress
+  delaycompress
+}

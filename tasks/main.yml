@@ -17,6 +17,7 @@
 - include: _initd.yml
 
 - include: _haproxyctl.yml
+  when: haproxy_haproxyctl
 
 - name: start haproxy
   service: >

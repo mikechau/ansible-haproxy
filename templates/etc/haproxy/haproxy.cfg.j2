@@ -33,13 +33,13 @@ defaults
 
 frontend http
     bind :80
-    acl servers_down nbsrv({{ application_name }}) lt 1
+    acl servers_down nbsrv({{ haproxy_app_name }}) lt 1
     monitor-uri /haproxy?monitor
     monitor fail if servers_down
 
-    default_backend {{ application_name }}
+    default_backend {{ haproxy_app_name }}
 
-backend {{ application_name }}
+backend {{ haproxy_app_name }}
     option httpchk GET /{{ haproxy_http_check_uri }}
     http-check disable-on-404
 

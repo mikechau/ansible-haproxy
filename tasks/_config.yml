@@ -1,5 +1,10 @@
 ---
 - name: generate haproxy config
   template: >
-    src=haproxy.cfg.j2
+    src=/etc/haproxy/haproxy.cfg.j2
     dest="{{ haproxy_config_path }}/haproxy.cfg"
+
+- name: generate logrotate config
+  template: >
+    src=/etc/logrotate.d/haproxy.j2
+    dest="{{ haproxy_logrotate_path }}"
