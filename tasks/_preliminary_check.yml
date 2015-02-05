@@ -3,7 +3,13 @@
   stat: >
     path="{{ haproxy_local_sbin }}"
   register: haproxy_bin
-  changed_when: haproxy_bin.stat.exists
+
+- name: determine if haproxy service exists
+  stat: >
+    path="{{ haproxy_initd }}"
+  register: haproxy_service
+  when: haproxy_bin.stat.exists
+  changed_when: haproxy_service.stat.exists
   notify:
     - stop haproxy
 
