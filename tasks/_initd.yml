@@ -12,12 +12,6 @@
   command: service haproxy check
   register: haproxy_check_config
 
-- debug: var=haproxy_check_config
-  when: debug_role
-
 - name: chkconfig
   command: chkconfig haproxy on
   register: haproxy_chkconfig_on
-
-- debug: var=haproxy_chkconfig_on
-  when: debug_role
