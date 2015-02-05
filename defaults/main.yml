@@ -11,8 +11,6 @@ haproxy_group: "{{ haproxy_user }}"
 haproxy_stat_user: haproxy
 haproxy_stat_pass: haproxy
 
-haproxy_haproxyctl: true
-
 # / is automatically pre-appended
 haproxy_http_check_uri: ok.html
 
