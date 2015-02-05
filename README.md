@@ -8,7 +8,7 @@ Currently for `CentOS` only.
 
 Remember to enable UDP 514 on `syslog`.
 
-Example `rsyslog`:
+Example `rsyslog.conf`:
 
 ```
 $ModLoad imudp
