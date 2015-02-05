@@ -2,6 +2,5 @@ if $programmname contains 'haproxy' then {
   local0.=info -{{ haproxy_log_info }};
   & ~
 
-  local1.notice -{{ haproxy_log_notice }}
-  & ~
+  local1.notice {{ haproxy_log_notice }}
 }
