@@ -37,7 +37,7 @@ haproxy_source_path: "{{ haproxy_source_root_path}}/haproxy-{{ haproxy_version }
 haproxy_source_url: http://www.haproxy.org/download/1.5/src/haproxy-1.5.11.tar.gz
 
 haproxy_local_sbin_path: /usr/local/sbin
-haproxy_local_sbin: "{{ haproxy_local_base_sbin_path }}/haproxy"
+haproxy_local_sbin: "{{ haproxy_local_sbin_path }}/haproxy"
 haproxy_usr_sbin_path: /usr/sbin
 haproxy_config_path: /etc/haproxy
 haproxy_stats_path: /var/lib/haproxy
