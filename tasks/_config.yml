@@ -15,3 +15,6 @@
     dest="{{ haproxy_rsyslog_conf }}"
   notify:
     - reload rsyslog
+
+- name: haproxy flush handlers
+  meta: flush_handlers
