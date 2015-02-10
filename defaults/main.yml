@@ -27,6 +27,9 @@ haproxy_app_servers:
 
 haproxy_app_name: default
 
+haproxy_ssl: false
+haproxy_ssl_cert:
+
 ############################################################
 ##### Haproxy Installer Settings
 ############################################################

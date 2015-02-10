@@ -9,6 +9,10 @@ global
     user {{ haproxy_user }}
     group {{ haproxy_group }}
     daemon
+{% if haproxy_ssl %}
+    tune.ssl.default-dh-param 2048
+    ssl-default-bind-ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!3DES:!MD5:!PSK
+{% endif %}
 
 defaults
     log global
@@ -35,6 +39,10 @@ defaults
 
 frontend http
     bind :80
+{% if haproxy_ssl %}
+    bind :443 ssl no-sslv3 no-tlsv10 crt {{ haproxy_ssl_cert }}
+    redirect scheme https if !{ ssl_fc }
+{% endif %}
     acl servers_down nbsrv({{ haproxy_app_name }}) lt 1
     monitor-uri /haproxy?monitor
     monitor fail if servers_down
@@ -44,11 +52,8 @@ frontend http
 backend {{ haproxy_app_name }}
     option httpchk GET /{{ haproxy_http_check_uri }}
     http-check disable-on-404
-
 {% for app in haproxy_app_servers %}
-
     server {{ app['id'] }} {{ app['host'] }}:{{ app['port'] }} check inter 2s rise 2 fall 3
-
 {% endfor %}
 
 listen stats :9001
