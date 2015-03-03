@@ -7,6 +7,9 @@ Currently for `CentOS` only.
 # Config Options
 ```yaml
 ---
+############################################################
+##### Haproxy Config Settings (Required)
+############################################################
 haproxy_haproxyctl: true
 haproxy_haproxyctl_version: 1.3.0
 
