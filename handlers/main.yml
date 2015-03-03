@@ -3,8 +3,4 @@
   service: >
     state=stopped
     name=haproxy
-
-- name: reload rsyslog
-  service: >
-    state=reloaded
-    name=rsyslog
+  sudo: yes

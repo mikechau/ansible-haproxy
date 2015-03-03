@@ -13,8 +13,8 @@
   template: >
     src=etc/rsyslog.d/haproxy.conf.j2
     dest="{{ haproxy_rsyslog_conf }}"
-  notify:
-    - reload rsyslog
 
-- name: haproxy flush handlers
-  meta: flush_handlers
+- name: restart rsyslog
+  service: >
+    state=restarted
+    name=rsyslog
